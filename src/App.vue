@@ -9,7 +9,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <img alt="Vue logo" src="./assets/logo.png">
 
-    <scroll-percent ref="st" @watchPercent="watchPercent" :stickyOffset="100">
+    <scroll-percent ref="st" @watchPercent="watchPercent" :stickyOffset="0">
       <template slot="viewElse" slot-scope="{percent}">
         <div style="position: absolute;left: 50%;top: 50%;font-size: 150px;z-index: 999;" class="1" v-show="percent>0.1&&percent<0.3">
           <h2>111</h2>
