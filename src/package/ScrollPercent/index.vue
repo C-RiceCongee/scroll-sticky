@@ -47,7 +47,7 @@ export default {
       if (!cavRef) return;
       cavRef.width = window.innerWidth;
       cavRef.height = window.innerHeight;
-      this.$emit("watchPercent");
+      this.$emit("watchPercent",0);
     },
     scrollHandler() {
       const container = this.$refs?.container;
