@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="Object.assign(containerStyle, { position: 'relative' })"
+    :style="Object.assign(containerStyle, { position: 'relative',backgroundColor:undertone })"
     class="container"
     ref="container"
   >
@@ -15,10 +15,14 @@ export default {
   name: "scroll-percent",
   data() {
     return {
-      percent: 0,
+      percent: 0
     };
   },
   props: {
+    undertone:{
+      type:String,
+      default:"#fff000"
+    },
     containerStyle: {
       type: Object,
       default() {
@@ -34,19 +38,23 @@ export default {
   },
   methods: {
     getContext() {
-      const cavRef = this.$refs.cav;
-      return cavRef.getContext("2d");
+      const cavRef = this.$refs?.cav;
+      if(!cavRef)return
+      return cavRef.getContext("2d")
     },
     initCanvas() {
-      const cavRef = this.$refs.cav;
+      const cavRef = this.$refs?.cav;
       if (!cavRef) return;
       cavRef.width = window.innerWidth;
       cavRef.height = window.innerHeight;
       this.$emit("watchPercent");
     },
     scrollHandler() {
-      const container = this.$refs.container;
-      const cav = this.$refs.cav;
+      const container = this.$refs?.container;
+      const cav = this.$refs?.cav;
+      if(!container||!cav){
+        return
+      }
       const cavHeight = cav.offsetHeight;
       const containerHeight = container.offsetHeight; // default 5000
       const hasScrollTop =
